@@ -1,8 +1,7 @@
 <?php
-$pdo = new PDO(
-    "mysql:host=db;dbname=appdb",
-    "root",
-    "root"
-);
 
-echo "DB connected OK 🚀";
+require_once "../app/core/Router.php";
+
+$router = new Router();
+
+$router->route();
