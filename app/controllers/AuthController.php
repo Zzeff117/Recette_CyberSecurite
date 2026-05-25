@@ -6,4 +6,9 @@ class AuthController
     {
         require_once "../app/views/auth/login.php";
     }
+
+    public function authenticate()
+    {
+        echo "AUTH METHOD OK";
+    }
 }

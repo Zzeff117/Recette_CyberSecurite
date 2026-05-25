@@ -1,20 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title>Connexion</title>
 </head>
 <body>
 
-<h1>Page de connexion</h1>
+<h1>Connexion</h1>
 
-<form>
-    <input type="email" placeholder="Email">
+<form action="http://localhost:8085/auth/authenticate" method="POST">
+
+    <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        required
+    >
+
     <br><br>
 
-    <input type="password" placeholder="Mot de passe">
+    <input
+        type="password"
+        name="password"
+        placeholder="Mot de passe"
+        required
+    >
+
     <br><br>
 
-    <button type="submit">Connexion</button>
+    <button type="submit">
+        Connexion
+    </button>
+
 </form>
 
 </body>
