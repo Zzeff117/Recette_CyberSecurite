@@ -375,6 +375,6 @@ L'application respecte les exigences de sécurité du cahier des charges. Toutes
 
 **Document rédigé dans le cadre du Projet Final**  
 **Formation Analyste Cybersécurité - GRETA 92**  
-**© 2026 - BAAZAOUI Seifeddine**
+**© 2026 **
 
 </div>
