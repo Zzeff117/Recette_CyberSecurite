@@ -1,31 +1,26 @@
 <?php
 
-require_once "../app/core/Database.php";
+require_once __DIR__ . '/../core/Database.php';
 
 class User
 {
-    private $pdo;
+    private $conn;
 
     public function __construct()
     {
-        $database = new Database();
+        $db = new Database();
+$this->conn = $db->getConnection();    }
 
-        $this->pdo = $database->connect();
-    }
-
-    public function create($username, $email, $password)
+    public function create($email, $password)
     {
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO users (email, password)
+                VALUES (:email, :password)";
 
-        $sql = "INSERT INTO users(username, email, password)
-                VALUES(:username, :email, :password)";
-
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->conn->prepare($sql);
 
         return $stmt->execute([
-            ':username' => $username,
             ':email' => $email,
-            ':password' => $hashedPassword
+            ':password' => password_hash($password, PASSWORD_BCRYPT)
         ]);
     }
 
@@ -33,11 +28,9 @@ class User
     {
         $sql = "SELECT * FROM users WHERE email = :email";
 
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->conn->prepare($sql);
 
-        $stmt->execute([
-            ':email' => $email
-        ]);
+        $stmt->execute([':email' => $email]);
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }

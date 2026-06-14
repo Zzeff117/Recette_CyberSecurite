@@ -1,37 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
+
 <head>
-    <title>Connexion</title>
+<meta charset="UTF-8">
+<title>CyberSec Platform</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+body{
+    background: linear-gradient(135deg,#0f172a,#1e293b);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.login-card{
+    width:450px;
+    background:white;
+    border-radius:20px;
+    padding:40px;
+    box-shadow:0 20px 40px rgba(0,0,0,.3);
+}
+
+.logo{
+    font-size:60px;
+    text-align:center;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.btn-login{
+    width:100%;
+}
+
+</style>
+
 </head>
+
 <body>
 
-<h1>Connexion</h1>
+<div class="login-card">
 
-<form action="http://localhost:8085/auth/authenticate" method="POST">
+    <div class="logo">
+        🛡️
+    </div>
 
-    <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        required
-    >
+    <div class="title">
+        <h2>Cyber Security Platform</h2>
+        <p class="text-muted">
+            Authentification sécurisée
+        </p>
+    </div>
 
-    <br><br>
+    <form method="POST" action="/?url=auth/authenticate">
 
-    <input
-        type="password"
-        name="password"
-        placeholder="Mot de passe"
-        required
-    >
+        <div class="mb-3">
+            <label>Email</label>
 
-    <br><br>
+            <input
+                type="email"
+                name="email"
+                class="form-control"
+                required>
+        </div>
 
-    <button type="submit">
-        Connexion
-    </button>
+        <div class="mb-3">
+            <label>Mot de passe</label>
 
-</form>
+            <input
+                type="password"
+                name="password"
+                class="form-control"
+                required>
+        </div>
+
+        <button
+            type="submit"
+            class="btn btn-primary btn-login">
+            Se connecter
+        </button>
+
+    </form>
+
+</div>
 
 </body>
 </html>

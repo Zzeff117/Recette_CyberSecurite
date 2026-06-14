@@ -1,0 +1,250 @@
+<?php require_once __DIR__ . '/../layouts/header.php'; ?>
+<?php require_once __DIR__ . '/../layouts/sidebar.php'; ?>
+
+<style>
+
+.hero-banner{
+    height:220px;
+    border-radius:20px;
+    overflow:hidden;
+    position:relative;
+    margin-bottom:25px;
+
+    background-image:url('/assets/images/banner.jpeg');
+    background-size:cover;
+    background-position:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.45);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+    color:white;
+}
+
+.hero-overlay h1{
+    font-size:52px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.hero-overlay p{
+    font-size:18px;
+    margin-bottom:15px;
+}
+
+.hero-btn{
+    background:white;
+    color:#111;
+    text-decoration:none;
+    padding:10px 20px;
+    border-radius:10px;
+    font-weight:600;
+}
+
+.toolbar{
+    margin-bottom:25px;
+}
+
+.search-form{
+    display:flex;
+    gap:10px;
+}
+
+.search-form input{
+    height:48px;
+}
+
+.recipe-card{
+    border:none;
+    border-radius:16px;
+    overflow:hidden;
+    transition:.25s;
+    cursor:pointer;
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+}
+
+.recipe-card:hover{
+    transform:translateY(-5px);
+}
+
+.recipe-image{
+    height:220px;
+    width:100%;
+    object-fit:cover;
+}
+
+.card-text{
+    color:#666;
+    height:48px;
+    overflow:hidden;
+}
+
+.card-footer{
+    background:white;
+    border:none;
+}
+
+.btn-warning,
+.btn-danger{
+    border:none;
+}
+
+.recipe-title-overlay{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+
+    padding:15px;
+
+    color:white;
+
+    background:linear-gradient(
+        transparent,
+        rgba(0,0,0,.85)
+    );
+}
+
+.recipe-title-overlay h5{
+    margin:0;
+    font-weight:700;
+}
+
+</style>
+
+<div class="hero-banner">
+
+    <div class="hero-overlay">
+
+        <h1>Saveurs du Monde</h1>
+
+        <p>
+            Découvrez et partagez les meilleures recettes de cuisine
+        </p>
+
+        <a
+            href="/?url=recipe/createForm"
+            class="hero-btn">
+            Publier une recette
+        </a>
+
+    </div>
+
+</div>
+
+<div class="toolbar">
+
+    <form
+        method="GET"
+        action="/"
+        class="search-form">
+
+        <input
+            type="hidden"
+            name="url"
+            value="recipe/index">
+
+        <input
+            type="text"
+            name="q"
+            class="form-control"
+            value="<?= htmlspecialchars($_GET['q'] ?? '') ?>"
+            placeholder="Rechercher une recette...">
+
+        <button
+            type="submit"
+            class="btn btn-success">
+            Rechercher
+        </button>
+
+    </form>
+
+</div>
+
+<div class="row">
+
+<?php foreach ($recipes as $r): ?>
+
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+
+    <div
+        class="card recipe-card h-100"
+        onclick="window.location='/?url=recipe/show&id=<?= $r['id'] ?>'">
+
+        <?php if (!empty($r['image'])): ?>
+
+        <div style="position:relative;">
+
+            <img
+                src="/uploads/recipes/<?= htmlspecialchars($r['image']) ?>"
+                class="recipe-image"
+                alt="<?= htmlspecialchars($r['title']) ?>">
+
+            <div class="recipe-title-overlay">
+
+                <h5>
+                    <?= htmlspecialchars($r['title']) ?>
+                </h5>
+
+            </div>
+
+        </div>
+
+        <?php endif; ?>
+
+<div class="card-body">
+
+    <p class="card-text">
+        <?= htmlspecialchars($r['description']) ?>
+    </p>
+
+    <hr>
+
+    <small class="text-muted d-block">
+        🌍 <?= htmlspecialchars($r['country'] ?? 'Non renseigné') ?>
+    </small>
+
+    <small class="text-muted d-block">
+        ⭐ <?= htmlspecialchars($r['difficulty'] ?? 'Non renseigné') ?>
+    </small>
+
+</div>
+        <div class="card-footer">
+
+            <a
+                class="btn btn-warning btn-sm"
+                href="/?url=recipe/editForm&id=<?= $r['id'] ?>">
+                Modifier
+            </a>
+
+            <a
+                class="btn btn-danger btn-sm"
+                href="/?url=recipe/delete&id=<?= $r['id'] ?>"
+                onclick="return confirm('Supprimer cette recette ?')">
+                Supprimer
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<?php endforeach; ?>
+
+</div>
+
+</div>
+
+</body>
+</html>

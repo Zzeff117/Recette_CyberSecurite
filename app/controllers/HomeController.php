@@ -1,22 +1,44 @@
 <?php
 
-require_once "../app/core/Database.php";
+require_once __DIR__ . '/../Repositories/SecurityEventRepository.php';
+require_once __DIR__ . '/../Repositories/IncidentRepository.php';
+require_once __DIR__ . '/../Repositories/AuditLogRepository.php';
+require_once __DIR__ . '/../core/Database.php';
+require_once __DIR__ . '/../Repositories/VulnerabilityRepository.php';
 
 class HomeController
 {
-    public function index()
+    private $db;
+
+    public function __construct()
     {
         $database = new Database();
+        $this->db = $database->getConnection();
+    }
 
-        $pdo = $database->connect();
+    public function index()
+    {
+        $stmt = $this->db->query("
+            SELECT COUNT(*) AS total_recipes
+            FROM recipes
+        ");
 
-        if ($pdo) {
+        $recipes = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            echo "Connexion MySQL réussie 🚀";
+        $vulnRepo = new VulnerabilityRepository();
+	$incidentRepo = new IncidentRepository();
+	$auditRepo = new AuditLogRepository();
+	$eventRepo = new SecurityEventRepository();
 
-        } else {
+	$latestEvents = $eventRepo->getLatest();
+	$totalIncidents = $incidentRepo->countAll();
+	$totalAuditLogs = $auditRepo->countAll();
 
-            echo "Erreur connexion DB";
-        }
+        $totalRecipes = $recipes['total_recipes'];
+        $totalVulnerabilities = $vulnRepo->countAll();
+        $criticalVulnerabilities = $vulnRepo->countCritical();
+        $openVulnerabilities = $vulnRepo->countOpen();
+
+        require_once __DIR__ . '/../views/dashboard/index.php';
     }
 }

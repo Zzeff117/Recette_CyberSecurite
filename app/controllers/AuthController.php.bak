@@ -1,0 +1,55 @@
+<?php
+
+require_once __DIR__ . '/../models/User.php';
+
+class AuthController
+{
+    private $userModel;
+
+    public function __construct()
+    {
+        session_start();
+        $this->userModel = new User();
+    }
+
+    public function register()
+    {
+        require __DIR__ . '/../views/auth/register.php';
+    }
+
+    public function store()
+    {
+        $this->userModel->create($_POST['email'], $_POST['password']);
+
+        header("Location: /?url=auth/login");
+        exit;
+    }
+
+    public function login()
+{
+    die('LOGIN OK');
+}
+
+    public function authenticate()
+    {
+        $user = $this->userModel->findByEmail($_POST['email']);
+
+        if ($user && password_verify($_POST['password'], $user['password'])) {
+
+            $_SESSION['user'] = $user['email'];
+
+            header("Location: /?url=recipe/index");
+            exit;
+        }
+
+        echo "Login incorrect";
+    }
+
+    public function logout()
+    {
+        session_destroy();
+
+        header("Location: /?url=auth/login");
+        exit;
+    }
+}
