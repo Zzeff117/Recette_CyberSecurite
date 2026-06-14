@@ -15,10 +15,10 @@ Hauts-de-Seine
 
 **Développement sécurisé d’un site web de recettes de cuisine**
 
-**Auteur :** Malik HARRIZ  
-**Email :** malik.h@webdevpro.net  
+**Auteur :** BAAZAOUI Seifeddine / Mehdi / Bachir 
+**Email :** seifgreta93@gmail.com  
 
-**Date :** 14 Juin 2026
+**Date :** 15 Juin 2026
 
 **Document de Sécurité** *(Livrable n°3)*
 
