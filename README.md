@@ -13,7 +13,7 @@ Hauts-de-Seine
 
 **Développement sécurisé d'un site web de recettes de cuisine**
 
-**Auteur :** BAAZAOUI Seifeddine - EL Mehdi FECHTALI - Bachir  
+**Auteur :** BAAZAOUI Seifeddine - EL Mehdi FECHTALI - HEDI Bachir  
 **Date :** 15 Juin 2026
 
 
