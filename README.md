@@ -368,14 +368,6 @@ L'application respecte les exigences de sécurité du cahier des charges. Toutes
 - **Toutes les fonctionnalités obligatoires** du cahier des charges sont implémentées
 - **Fonctionnalités avancées** ajoutées (logs, timeout, pagination, recherche, filtres)
 
-### 🔮 Améliorations futures
-
-- [ ] Migration vers **HTTPS** avec certificat Let's Encrypt
-- [ ] Mise en place de **2FA** (Double authentification) pour les administrateurs
-- [ ] Implémentation d'un **WAF** (Web Application Firewall)
-- [ ] Audit de sécurité par un **tiers externe**
-- [ ] Tests de pénétration réguliers
-- [ ] Monitoring continu des logs avec **SIEM**
 
 ---
 
