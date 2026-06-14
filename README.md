@@ -15,7 +15,7 @@ Hauts-de-Seine
 
 **Développement sécurisé d’un site web de recettes de cuisine**
 
-**Auteur :** BAAZAOUI Seifeddine / Mehdi / Bachir 
+**Auteur :** BAAZAOUI Seifeddine - Mehdi - Bachir 
 **Email :** seifgreta93@gmail.com  
 
 **Date :** 15 Juin 2026
