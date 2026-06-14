@@ -1,9 +1,7 @@
-# 🍳 Projet Final - Site de Recettes Sécurisé
+#  Projet Final - Site de Recettes Sécurisé
 
 <div align="center">
 
-**RÉPUBLIQUE FRANÇAISE**  
-**Liberté • Égalité • Fraternité**
 
 **GRETA 92**  
 Hauts-de-Seine
@@ -15,17 +13,15 @@ Hauts-de-Seine
 
 **Développement sécurisé d'un site web de recettes de cuisine**
 
-**Auteur :** BAAZAOUI Seifeddine - Mehdi - Bachir  
-**Email :** seifgreta93@gmail.com  
+**Auteur :** BAAZAOUI Seifeddine - EL Mehdi FECHTALI - Bachir  
 **Date :** 15 Juin 2026
 
-**Document de Sécurité** *(Livrable n°3)*
 
 </div>
 
 ---
 
-# 📖 Documentation de Sécurité
+# 📖 Documentation du Projet
 
 **Projet Final – Analyste Cybersécurité**  
 **Greta 92 – 2026**
@@ -48,7 +44,8 @@ Hauts-de-Seine
 
 ## 1. Introduction
 
-Ce document présente les mesures de sécurité implémentées dans le site de recettes, conformément à la section 1.3 du cahier des charges. L'approche **"Secure by Design"** a été appliquée pour protéger l'application contre les vulnérabilités de l'OWASP Top 10.
+Ce projet, réalisé dans le cadre de la formation Analyste Cybersécurité au GRETA 92, consiste en le développement d'un site web de recettes de cuisine sécurisé. Il s'agit d'une mise en pratique complète des principes "Secure by Design", visant à protéger l'application contre les principales vulnérabilités web identifiées par l'OWASP Top 10 : injections SQL, XSS, CSRF, force brute, upload malveillant, mauvaise gestion des sessions, etc.
+Développée en PHP 8.3 / MariaDB / Apache selon une architecture MVC, l'application intègre un front-office public (consultation, recherche, filtrage, pagination) et un back-office administrateur sécurisé (CRUD recettes et utilisateurs, journalisation, timeout de session). Ce document détaille l'ensemble des mesures de sécurité déployées, les tests effectués et les choix techniques retenus.
 
 ---
 
